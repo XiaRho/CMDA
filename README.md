@@ -171,6 +171,7 @@ This project is based on the following open-source projects. We thank their
 authors for making the source code publically available.
 
 * [DAFormer](https://github.com/lhoyer/DAFormer)
+* [CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 * [MMSegmentation](https://github.com/open-mmlab/mmsegmentation)
 * [SegFormer](https://github.com/NVlabs/SegFormer)
 * [DACS](https://github.com/vikolss/DACS)
