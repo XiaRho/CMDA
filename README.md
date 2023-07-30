@@ -7,6 +7,40 @@
 
 :bell: We are happy to announce that CMDA was accepted at **ICCV2023**. :bell:
 
+## Overview
+
+Most nighttime semantic segmentation studies are based on domain 
+adaptation approaches and image input. However, limited by the 
+low dynamic range of conventional cameras, images fail to capture 
+structural details and boundary information in low-light conditions.
+
+Event cameras, as a new form of vision sensors, are complementary 
+to conventional cameras with their high dynamic range. To this end, 
+we propose a novel unsupervised Cross-Modality Domain Adaptation 
+(CMDA) framework to leverage multi-modality (Images and Events) 
+information for nighttime semantic segmentation, with only labels on 
+daytime images. 
+
+In CMDA, we design the Image Motion-Extractor to 
+extract motion information and the Image Content-Extractor to 
+extract content information from images, in order to bridge 
+the gap between different modalities (Images to Events) and 
+domains (Day to Night). Besides, we introduce the first image-event 
+nighttime semantic segmentation dataset. Extensive experiments on 
+both the public image dataset and the proposed image-event dataset 
+demonstrate the effectiveness of our proposed approach.
+
+The strengths of CMDA, compared to the previous 
+state-of-the-art UDA method DAFormer, can be observed 
+in qualitative examples from our proposed DSEC Night-Semantic dataset.
+![DSEC_results](resources/DSEC.png)
+
+
+Even without the event modality,  our proposed Image 
+Content-Extractor effectively mitigates the impact of 
+nighttime glare, resulting in clearer edge segmentation 
+of the sky and other objects.
+![DarkZurich_results](resources/DarkZurich.png)
 
 ## Setup Environment
 
@@ -51,19 +85,32 @@ python tools/convert_datasets/cityscapes.py data/cityscapes --nproc 8
 
 **DSEC Night_Semantic:** 
 
+Our proposed DSEC Night_Semantic consists of 5 nighttime sequences of Zurich City 09a-e, 
+and includes 1,692 training samples and 150 testing samples. 
+For each testing sample, we manually annotate them in 18 classes: 
+Road, Sidewalk, Building, Wall, Fence, Pole, Traffic Light, 
+Traffic Sign, Vegetation, Terrain, Sky, Person, Rider, Car, Bus, 
+Train, Motorcycle and Bicycle.
+
 ① Please, download the events_left.zip and images_rectified_left.zip in `zurich_city_09_a~09_e` from
-[here](https://dsec.ifi.uzh.ch/dsec-datasets/download/) and extract it to `data/DSEC_Night/events` and 
-`data/DSEC_Night/images`.
+[here](https://dsec.ifi.uzh.ch/dsec-datasets/download/) and extract it 
+to `data/DSEC_Night/zurich_city_09_x/events(images)`.
 
 ② Please, download the `labels` and `warp_images` folders from
-[here](https://drive.google.com/file/d/1oBX44pEKSrD6OZ0bDrU7FVYIZ_3XWi0-/view?usp=sharing) and extract it to `data/DSEC_Night`.
+[here](https://drive.google.com/file/d/1LWinkZXUWKBzl946wxhLKaHbOOIP-hRi/view?usp=sharing) 
+and extract it to `data/DSEC_Night/zurich_city_09_x`.
 
 ③ Finally, run the following scripts to generate night_dataset_wrap.txt 
 and night_test_dataset_wrap.txt for DSEC DataLoader.
-
 ```shell
 python create_dsec_dataset_txt.py --root_dir /path_to_CMDA/CMDA/data/DSEC_Night/
 ```
+
+④ (Optional) We modify the interpolation function in the warping 
+process to get more realistic paired images. You can download the 
+V2 version [here](https://drive.google.com/file/d/1BgYqQj97TBNJuqVnrbQcfKL3jjwQp5h2/view?usp=sharing). 
+Note that the results in our paper are obtained on the V1 version 
+of our dataset.
 
 **DarkZurich (Optional):** 
 
