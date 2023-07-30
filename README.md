@@ -148,7 +148,7 @@ The CMDA checkpoint trained on Cityscapes→DarkZurich can be tested
 on the DarkZurich testset using:
 
 ```shell
-sh test.sh work_dirs/211108_1622_gta2cs_daformer_s0_7f24c
+python my_test.py --work_dir work_dirs/local-basic/230221_1646_cs2dz_image+raw-isr_SharedD_L07_C01_b5_896f6
 ```
 
 The predictions can be submitted to the public evaluation server of the
