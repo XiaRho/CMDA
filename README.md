@@ -35,12 +35,23 @@ state-of-the-art UDA method DAFormer, can be observed
 in qualitative examples from our proposed DSEC Night-Semantic dataset.
 ![DSEC_results](resources/DSEC.png)
 
-
 Even without the event modality,  our proposed Image 
 Content-Extractor effectively mitigates the impact of 
 nighttime glare, resulting in clearer edge segmentation 
 of the sky and other objects.
 ![DarkZurich_results](resources/DarkZurich.png)
+
+If you find this project useful in your research, please consider citing:
+
+```
+@Article{xia2023cmda,
+  title={{CMDA}: Cross-modality domain adaptation for nighttime semantic segmentation},
+  author={Xia, Ruihao and Zhao, Chaoqiang and Zheng, Meng and Wu, Ziyan and Sun, Qiyu and Tang, Yang},
+  journal={arXiv preprint arXiv:2307.15942},
+  year={2023}
+}
+```
+
 
 ## Setup Environment
 
