@@ -2,8 +2,8 @@
 
 **by Ruihao Xia, Chaoqiang Zhao, Meng Zheng, Ziyan Wu, Qiyu Sun, and Yang Tang**
 
-**[[Arxiv]](https://arxiv.org/abs/xxxx.xxxxx)**
-**[[Paper]](https://arxiv.org/pdf/xxxx.xxxxx.pdf)**
+**[[Arxiv]](https://arxiv.org/abs/2307.15942)**
+**[[Paper]](https://arxiv.org/pdf/2307.15942.pdf)**
 
 :bell: We are happy to announce that CMDA was accepted at **ICCV2023**. :bell:
 
@@ -203,8 +203,8 @@ respective dataset to obtain the test score.
 
 ## Checkpoints
 
-* [CMDA for Cityscapes→DSEC](https://drive.google.com/file/d/1pG3kDClZDGwp1vSTEXmTchkGHmnLQNdP/view?usp=sharing)
-* [CMDA for Cityscapes→DarkZurich](https://drive.google.com/file/d/1V9EpoTePjGq33B8MfombxEEcq9a2rBEt/view?usp=sharing)
+* [CMDA for Cityscapes→DSEC](https://drive.google.com/file/d/1-UGTyTN0gfahSFhUKNzXQIwunbxo0Nda/view?usp=sharing)
+* [CMDA for Cityscapes→DarkZurich](https://drive.google.com/file/d/143RtW2nqOBJrEuapnfWbW-PeXKC2dsI6/view?usp=sharing)
 
 The checkpoints come with the training logs. Please note that:
 
