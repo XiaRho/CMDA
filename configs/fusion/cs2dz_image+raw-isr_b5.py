@@ -38,7 +38,7 @@ uda = dict(
     mixed_image_to_mixed_isr=True,
     forward_cfg=dict(loss_weight={'image': 0.7, 'events': 0.7, 'fusion': 0.7, 'img_self_res': 0.25},
                      gradual_rate=0.0),
-    shift_type='random',
+    shift_type='rightdown',
     isr_parms=dict(val_range=[1, 100],
                    _threshold=0.01,
                    _clip_range=0.1,
@@ -48,15 +48,15 @@ uda = dict(
     imnet_feature_dist_classes=[6, 7, 11, 12, 13, 14, 15, 16, 17, 18],
     imnet_feature_dist_scale_min_ratio=0.75,
     # Pseudo-Label Crop
-    pseudo_weight_ignore_top=0,  # top=15, bottom=120
-    pseudo_weight_ignore_bottom=0, debug_img_interval=500)  # ,debug_img_interval=10
+    pseudo_weight_ignore_top=15,  # top=15, bottom=120
+    pseudo_weight_ignore_bottom=120, debug_img_interval=500)  # ,debug_img_interval=10
 
 data = dict(
     train=dict(
         # Rare Class Sampling
         rare_class_sampling=dict(min_pixels=3000, class_temp=0.01, min_crop_ratio=0.5),
         source=dict(outputs={'image', 'img_self_res', 'label'},
-                    shift_type='random'),
+                    shift_type='rightdown'),
         target=dict(
             image_resize_size=(960, 540),
             image_crop_size=(512, 512),
@@ -66,7 +66,7 @@ data = dict(
                            _threshold=0.01,
                            _clip_range=0.1,
                            shift_pixel=3),
-            shift_type='random')),
+            shift_type='rightdown')),
     val=dict(
         image_resize_size=(960, 540),
         image_crop_size=(512, 512),

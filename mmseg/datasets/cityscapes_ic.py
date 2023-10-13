@@ -60,11 +60,11 @@ class CityscapesICDataset(Dataset):
                 label_name = image_path.replace('leftImg8bit', 'gtFine')[:-4] + '_labelTrainIds.png'
                 self.file_path['label'].append(label_name)
 
-                events_gan_name = image_path.replace('leftImg8bit', 'leftImg8bit_EventGAN')[:-13] + '.png'
-                self.file_path['events_gan'].append(events_gan_name)
-
-                events_gan_name = image_path.replace('leftImg8bit', 'leftImg8bit_esim')[:-13] + '.png'
-                self.file_path['events_esim'].append(events_gan_name)
+                # events_gan_name = image_path.replace('leftImg8bit', 'leftImg8bit_EventGAN')[:-13] + '.png'
+                # self.file_path['events_gan'].append(events_gan_name)
+                #
+                # events_gan_name = image_path.replace('leftImg8bit', 'leftImg8bit_esim')[:-13] + '.png'
+                # self.file_path['events_esim'].append(events_gan_name)
 
         self.image_resize_size = image_resize_size
         self.image_crop_size = image_crop_size
