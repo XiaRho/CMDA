@@ -111,8 +111,8 @@ to `data/DSEC_Night/zurich_city_09_x/events(images)`.
 [here](https://drive.google.com/file/d/1LWinkZXUWKBzl946wxhLKaHbOOIP-hRi/view?usp=sharing) 
 and extract it to `data/DSEC_Night/zurich_city_09_x`.
 
-③ Finally, run the following scripts to generate night_dataset_wrap.txt 
-and night_test_dataset_wrap.txt for DSEC DataLoader.
+③ Finally, run the following scripts to generate night_dataset_warp.txt 
+and night_test_dataset_warp.txt for DSEC DataLoader.
 ```shell
 python create_dsec_dataset_txt.py --root_dir /path_to_CMDA/CMDA/data/DSEC_Night/
 ```

@@ -529,7 +529,7 @@ class EventsEncoderDecoder(BaseSegmentorEvents):
             events = None
             img_meta = [kwargs['img_metas']]
         else:
-            img = kwargs['wrap_image'] if 'wrap_image' in kwargs.keys() else None
+            img = kwargs['warp_image'] if 'warp_image' in kwargs.keys() else None
             events = kwargs['events_vg'] if 'events_vg' in kwargs.keys() else None
             img_meta = [kwargs['img_metas']]
         if isinstance(img, list):
@@ -897,7 +897,7 @@ class FusionEncoderDecoder(BaseSegmentorFusion):
     def whole_inference(self, rescale, **kwargs):
         """Inference with full image."""
 
-        img = kwargs['wrap_image'] if 'wrap_image' in kwargs.keys() else kwargs['image']
+        img = kwargs['warp_image'] if 'warp_image' in kwargs.keys() else kwargs['image']
         if self.train_type in {'cs2dsec_image+events', 'cs2dsec_image+events_together'} and 'events_vg' in kwargs.keys():
             events = kwargs['events_vg']
         elif self.train_type == 'cs2dz_image+raw-isr_split':

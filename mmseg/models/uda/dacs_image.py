@@ -173,7 +173,7 @@ class DACSImage(UDADecoratorFusion):
         if 'image' in data_batch['source'].keys():
             num_samples = data_batch['source']['image'].shape[0]
         else:
-            num_samples = data_batch['target']['wrap_image'].shape[0]
+            num_samples = data_batch['target']['warp_image'].shape[0]
         outputs = dict(log_vars=log_vars, num_samples=num_samples)
         return outputs
 

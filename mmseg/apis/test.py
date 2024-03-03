@@ -152,8 +152,8 @@ def single_gpu_test_events(model,
                     img_metas = data['img_metas'].data[0][0]
 
                 img_show, events_show = None, None
-                if 'wrap_image' in data.keys():
-                    img_key = 'wrap_image'
+                if 'warp_image' in data.keys():
+                    img_key = 'warp_image'
                 else:
                     img_key = 'image'
                 img_tensor = data[img_key]

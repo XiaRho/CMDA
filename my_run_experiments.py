@@ -362,8 +362,8 @@ if __name__ == '__main__':
         if args.without_events:
             cfg['uda']['without_events'] = True
             assert cfg['data']['val']['type'] == 'DSECDataset'
-            cfg['data']['val']['outputs'] = ['label', 'img_metas', 'wrap_image']
-            cfg['data']['test']['outputs'] = ['label', 'img_metas', 'wrap_image']
+            cfg['data']['val']['outputs'] = ['label', 'img_metas', 'warp_image']
+            cfg['data']['test']['outputs'] = ['label', 'img_metas', 'warp_image']
         elif 'without_events' not in cfg['uda'].keys():
             cfg['uda']['without_events'] = False
 

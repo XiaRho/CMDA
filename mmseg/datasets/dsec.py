@@ -223,45 +223,45 @@ class DSECDataset(Dataset):
             image = self.image_transform(image)
             output['image'] = image
 
-        if 'wrap_image' in self.outputs:
-            wrap_image_name = image_path.replace('images/left/rectified', 'wrap_images')
-            wrap_image_pil = Image.open(wrap_image_name).convert('RGB')
+        if 'warp_image' in self.outputs:
+            warp_image_name = image_path.replace('images/left/rectified', 'warp_images')
+            warp_image_pil = Image.open(warp_image_name).convert('RGB')
             if 'label' not in self.outputs:  # do Data Augmentation
-                wrap_image_pil = wrap_image_pil.crop(box=(x, y, x + self.crop_size[0], y + self.crop_size[1]))
+                warp_image_pil = warp_image_pil.crop(box=(x, y, x + self.crop_size[0], y + self.crop_size[1]))
                 if flip_flag:
-                    wrap_image_pil = self.HorizontalFlip(wrap_image_pil)
-                wrap_image_pil = wrap_image_pil.resize(size=self.after_crop_resize_size, resample=Image.BILINEAR)
-                wrap_image = self.image_transform(wrap_image_pil)
+                    warp_image_pil = self.HorizontalFlip(warp_image_pil)
+                warp_image_pil = warp_image_pil.resize(size=self.after_crop_resize_size, resample=Image.BILINEAR)
+                warp_image = self.image_transform(warp_image_pil)
             else:  # test mode
-                wrap_image = self.image_transform(wrap_image_pil)[:, :440]
-            output['wrap_image'] = wrap_image
+                warp_image = self.image_transform(warp_image_pil)[:, :440]
+            output['warp_image'] = warp_image
 
-        if 'wrap_img_self_res' in self.outputs:
+        if 'warp_img_self_res' in self.outputs:
             if self.isr_type in {'raw', 'denoised'}:
                 if self.isr_type == 'raw':
-                    wrap_img_self_res_name = image_path.replace('images/left/rectified', 'wrap_raw_img_self_res')
+                    warp_img_self_res_name = image_path.replace('images/left/rectified', 'warp_raw_img_self_res')
                 else:
-                    wrap_img_self_res_name = image_path.replace('images/left/rectified', 'wrap_img_self_res')
-                wrap_img_self_res_pil = Image.open(wrap_img_self_res_name).convert('L')
-                wrap_img_self_res_pil = wrap_img_self_res_pil.crop(box=(x, y, x + self.crop_size[0], y + self.crop_size[1]))
+                    warp_img_self_res_name = image_path.replace('images/left/rectified', 'warp_img_self_res')
+                warp_img_self_res_pil = Image.open(warp_img_self_res_name).convert('L')
+                warp_img_self_res_pil = warp_img_self_res_pil.crop(box=(x, y, x + self.crop_size[0], y + self.crop_size[1]))
                 if flip_flag:
-                    wrap_img_self_res_pil = self.HorizontalFlip(wrap_img_self_res_pil)
-                wrap_img_self_res_pil = wrap_img_self_res_pil.resize(size=self.after_crop_resize_size, resample=Image.BILINEAR)
-                wrap_img_self_res = self.totensor_transform(wrap_img_self_res_pil)
-                wrap_img_self_res = (wrap_img_self_res - 0.5) / 0.5
+                    warp_img_self_res_pil = self.HorizontalFlip(warp_img_self_res_pil)
+                warp_img_self_res_pil = warp_img_self_res_pil.resize(size=self.after_crop_resize_size, resample=Image.BILINEAR)
+                warp_img_self_res = self.totensor_transform(warp_img_self_res_pil)
+                warp_img_self_res = (warp_img_self_res - 0.5) / 0.5
             else:
                 if self.shift_type == 'random':
                     direct = [['leftdown', 'leftup'], ['rightdown', 'rightup']]
                     this_shift_direction = direct[x % 2][y % 2]
                 else:
                     this_shift_direction = self.shift_type
-                wrap_img_self_res = get_image_change_from_pil(wrap_image_pil, width=wrap_image_pil.size[0],
-                                                              height=wrap_image_pil.size[1],
+                warp_img_self_res = get_image_change_from_pil(warp_image_pil, width=warp_image_pil.size[0],
+                                                              height=warp_image_pil.size[1],
                                                               shift_direction=this_shift_direction,
                                                               **self.image_change_parms)
-            if self.enforce_3_channels and wrap_img_self_res.shape[0] == 1:
-                wrap_img_self_res = wrap_img_self_res.repeat(3, 1, 1)
-            output['wrap_img_self_res'] = wrap_img_self_res
+            if self.enforce_3_channels and warp_img_self_res.shape[0] == 1:
+                warp_img_self_res = warp_img_self_res.repeat(3, 1, 1)
+            output['warp_img_self_res'] = warp_img_self_res
 
         if '19classes' in self.outputs:
             _19classes_name = '{}19classes/{:06d}.png'.format(image_path.split('images/left/rectified')[0],
@@ -506,7 +506,7 @@ if __name__ == '__main__':
         events_bins = 1
         events_clip_range = None
     dataset = DSECDataset(dataset_txt_path='D:/研究生/Python/Night/DSEC_dataset/night_test_labels_dataset.txt',
-                          outputs={'wrap_image', 'events_vg', 'label', 'img_metas'},
+                          outputs={'warp_image', 'events_vg', 'label', 'img_metas'},
                           events_bins=events_bins, events_clip_range=events_clip_range,
                           events_bins_5_avg_1=events_bins_5_avg_1)
     data_0 = dataset[20]

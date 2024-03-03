@@ -110,8 +110,8 @@ class UDADataset(object):
         '''output['day_image'] = s1['image']
         output['day_image_change'] = s1['image_change']
         output['day_label'] = s1['label']
-        if 'wrap_image' in s2.keys():
-            output['night_image'] = s2['wrap_image']
+        if 'warp_image' in s2.keys():
+            output['night_image'] = s2['warp_image']
         else:
             output['night_image'] = s2['image']
         output['night_events'] = s2['events_vg']'''
@@ -130,8 +130,8 @@ class UDADataset(object):
             '''output['day_image'] = s1['image']
             output['day_image_change'] = s1['image_change']
             output['day_label'] = s1['label']
-            if 'wrap_image' in s2.keys():
-                output['night_image'] = s2['wrap_image']
+            if 'warp_image' in s2.keys():
+                output['night_image'] = s2['warp_image']
             else:
                 output['night_image'] = s2['image']
             output['night_events'] = s2['events_vg']'''

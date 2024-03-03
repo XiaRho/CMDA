@@ -69,7 +69,7 @@ data = dict(
                                    _threshold=0.005,
                                    _clip_range=0.1,
                                    shift_pixel=1),
-                    outputs={'wrap_image', 'events_vg', 'wrap_img_self_res'})),
+                    outputs={'warp_image', 'events_vg', 'warp_img_self_res'})),
     val=dict(events_bins=events_bins),
     test=dict(events_bins=events_bins))
 

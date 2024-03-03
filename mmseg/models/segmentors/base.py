@@ -324,7 +324,7 @@ class BaseSegmentorEvents(BaseModule, metaclass=ABCMeta):
         if 'image' in kwargs.keys():
             inputs = [kwargs['image']]
         else:
-            inputs = [kwargs['wrap_image'] if 'wrap_image' in kwargs.keys() else kwargs['events_vg']]
+            inputs = [kwargs['warp_image'] if 'warp_image' in kwargs.keys() else kwargs['events_vg']]
         img_metas = [kwargs['img_metas']]
 
         for var, name in [(inputs, 'imgs'), (img_metas, 'img_metas')]:
@@ -607,7 +607,7 @@ class BaseSegmentorFusion(BaseModule, metaclass=ABCMeta):
             inputs = [kwargs['image']]
             img_metas = [kwargs['img_metas']]
         else:
-            inputs = [kwargs['wrap_image'] if 'wrap_image' in kwargs.keys() else kwargs['events_vg']]
+            inputs = [kwargs['warp_image'] if 'warp_image' in kwargs.keys() else kwargs['events_vg']]
             img_metas = [kwargs['img_metas']]
         '''
         [[[{'filename': '/home/x1031804104/CVPR2022/Dataset/Dark_Zurich/rgb_anon/val/night/GOPR0356/GOPR0356_frame_

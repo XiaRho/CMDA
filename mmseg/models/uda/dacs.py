@@ -310,7 +310,7 @@ class DACS(UDADecoratorFusion):
             if 'image' in data_batch['source'].keys():
                 num_samples = data_batch['source']['image'].shape[0]
             else:
-                num_samples = data_batch['target']['wrap_image'].shape[0]
+                num_samples = data_batch['target']['warp_image'].shape[0]
             outputs = dict(log_vars=log_vars, num_samples=num_samples)
         return outputs
 
@@ -361,7 +361,7 @@ class DACS(UDADecoratorFusion):
         ################################################################
         day_events, night_events = None, None
         if self.train_type in {'cs2dsec_image', 'cs2dz_image'}:
-            night_key = 'wrap_image' if 'wrap_image' in kwargs['target'].keys() else 'image'
+            night_key = 'warp_image' if 'warp_image' in kwargs['target'].keys() else 'image'
             day_image = kwargs['source']['image']
             day_label = kwargs['source']['label']
             night_image = kwargs['target'][night_key]
@@ -387,9 +387,9 @@ class DACS(UDADecoratorFusion):
             day_image = kwargs['source']['image']
             day_isr = kwargs['source']['img_self_res']
             day_label = kwargs['source']['label']
-            if 'wrap_image' in kwargs['target'].keys():  # cs2dsec
-                night_image = kwargs['target']['wrap_image']
-                night_isr = kwargs['target']['wrap_img_self_res']
+            if 'warp_image' in kwargs['target'].keys():  # cs2dsec
+                night_image = kwargs['target']['warp_image']
+                night_isr = kwargs['target']['warp_img_self_res']
             else:
                 night_image = kwargs['target']['image']
                 night_isr = kwargs['target']['night_isr']
@@ -406,9 +406,9 @@ class DACS(UDADecoratorFusion):
                 day_events = kwargs['source']['img_time_res']
 
             day_label = kwargs['source']['label']
-            night_image = kwargs['target']['wrap_image']
+            night_image = kwargs['target']['warp_image']
             night_events = kwargs['target']['events_vg']
-            night_isr = kwargs['target']['wrap_img_self_res']
+            night_isr = kwargs['target']['warp_img_self_res']
             if self.without_events:
                 self.forward_cfg['isr_events_fusion_choice'] = -1
             elif self.without_isd:

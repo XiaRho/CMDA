@@ -31,7 +31,7 @@ def parse_args():
         description='Convert DSEC annotations to TrainIds')
     parser.add_argument('dsec_path', help='DSEC data path')
     parser.add_argument('--gt-dir', default='19classes', type=str)
-    parser.add_argument('--dsec_dataset_txt_path', default='./day_dataset_wrap.txt', type=str)
+    parser.add_argument('--dsec_dataset_txt_path', default='./day_dataset_warp.txt', type=str)
     parser.add_argument('-o', '--out-dir', help='output path')
     parser.add_argument('--nproc', default=1, type=int, help='number of process')
     args = parser.parse_args()
@@ -81,7 +81,7 @@ def main():
             for png in mmcv.scandir(gt_dir, '.png', recursive=True):
                 png_file = osp.join(gt_dir, png)
                 if png_file in dsec_dataset_label_file:
-                # if os.path.isfile(png_file.replace('19classes', 'wrap_images')):
+                # if os.path.isfile(png_file.replace('19classes', 'warp_images')):
                     png_files.append(png_file)
 
     only_postprocessing = False
@@ -100,5 +100,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-# python tools/convert_datasets/dsec.py D:/研究生/Python/Night/DSEC_dataset/Day --nproc 8
-# python tools/convert_datasets/dsec.py /home/ubuntu/XRH/Night/DSEC_dataset/Day --nproc 8
