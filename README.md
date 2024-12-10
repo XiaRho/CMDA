@@ -214,7 +214,7 @@ respective dataset to obtain the test score.
 
 ## Checkpoints
 
-* [CMDA for Cityscapes→DSEC](https://drive.google.com/file/d/1-UGTyTN0gfahSFhUKNzXQIwunbxo0Nda/view?usp=sharing)
+* [CMDA for Cityscapes→DSEC](https://drive.google.com/file/d/1tdULsto0K6c0HNi9Y_iLM8a8m26ZrOiA/view?usp=sharing)
 * [CMDA for Cityscapes→DarkZurich](https://drive.google.com/file/d/143RtW2nqOBJrEuapnfWbW-PeXKC2dsI6/view?usp=sharing)
 
 The checkpoints come with the training logs. Please note that:
